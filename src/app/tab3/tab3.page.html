@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="tertiary">
+    <ion-title>Edit / Delete</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding" color="light">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Search Item to Edit</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item>
+        <ion-label position="stacked">Item Name</ion-label>
+        <ion-input [(ngModel)]="searchName"></ion-input>
+      </ion-item>
+
+      <ion-button 
+        expand="block" 
+        color="tertiary" 
+        (click)="loadItem()"
+        class="ion-margin-top">
+        LOAD ITEM
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="editingItem" class="ion-margin-top">
+    <ion-card-header>
+      <ion-card-title>Edit Item</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list>
+        <ion-item>
+          <ion-label position="stacked">Name</ion-label>
+          <ion-input [(ngModel)]="editingItem.item_name"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select [(ngModel)]="editingItem.category">
+            <ion-select-option>Electronics</ion-select-option>
+            <ion-select-option>Furniture</ion-select-option>
+            <ion-select-option>Clothing</ion-select-option>
+            <ion-select-option>Tools</ion-select-option>
+            <ion-select-option>Miscellaneous</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Quantity</ion-label>
+          <ion-input type="number" [(ngModel)]="editingItem.quantity"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Price</ion-label>
+          <ion-input type="number" [(ngModel)]="editingItem.price"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label position="stacked">Supplier</ion-label>
+          <ion-input [(ngModel)]="editingItem.supplier_name"></ion-input>
+        </ion-item>
+
+        <!-- ✅ ADD FEATURED TOGGLE IN EDIT PAGE -->
+        <ion-item>
+          <ion-label position="stacked">Mark as Featured Item</ion-label>
+          <ion-toggle [(ngModel)]="editingItem.featured_item" [checked]="editingItem.featured_item === 1"></ion-toggle>
+        </ion-item>
+
+      </ion-list>
+
+      <ion-row class="ion-margin-top">
+        <ion-col size="6">
+          <ion-button expand="block" color="tertiary" (click)="updateItem()">
+            Update
+          </ion-button>
+        </ion-col>
+        <ion-col size="6">
+          <ion-button expand="block" color="danger" (click)="deleteItem()">
+            Delete
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="tertiary" (click)="showHelp()">
+      <ion-icon name="help-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

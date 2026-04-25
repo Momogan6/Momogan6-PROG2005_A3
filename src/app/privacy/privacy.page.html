@@ -1,0 +1,37 @@
+<!-- Header -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Privacy & Security</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Content -->
+<ion-content class="ion-padding" color="light">
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Privacy Policy</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <p>This Inventory Management App values your privacy and protects all data.</p>
+
+      <h3>Data Storage</h3>
+      <p>All inventory data is stored <strong>locally on your device</strong> using localStorage. No data is sent to external servers or third parties.</p>
+
+      <h3>Data Usage</h3>
+      <p>Data is only used for managing inventory functions. It will never be shared, sold, or used for other purposes.</p>
+
+      <h3>Security</h3>
+      <p>All data remains on your device and is fully controlled by you. Clearing app storage will delete all data permanently.</p>
+
+      <h3>Group Project Notice</h3>
+      <p>This application is developed as a group project. We follow strict privacy and security standards.</p>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- HELP BUTTON (required by assignment) -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="primary" (click)="showHelp()">
+      <ion-icon name="help-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>

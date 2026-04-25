@@ -1,0 +1,82 @@
+<!-- Header section for Add Item page -->
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title>Add New Item</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<!-- Main content area -->
+<ion-content class="ion-padding" color="light">
+  <!-- Form card for item data input -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Item Information</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-list>
+        <!-- Required: Item name input field -->
+        <ion-item>
+          <ion-label position="stacked">Item Name *</ion-label>
+          <ion-input [(ngModel)]="newItem.item_name" required></ion-input>
+        </ion-item>
+
+        <!-- Item category selection dropdown -->
+        <ion-item>
+          <ion-label position="stacked">Category</ion-label>
+          <ion-select [(ngModel)]="newItem.category">
+            <ion-select-option>Electronics</ion-select-option>
+            <ion-select-option>Furniture</ion-select-option>
+            <ion-select-option>Clothing</ion-select-option>
+            <ion-select-option>Tools</ion-select-option>
+            <ion-select-option>Miscellaneous</ion-select-option>
+          </ion-select>
+        </ion-item>
+
+        <!-- Required: Item quantity input field -->
+        <ion-item>
+          <ion-label position="stacked">Quantity *</ion-label>
+          <ion-input type="number" [(ngModel)]="newItem.quantity" required min="0"></ion-input>
+        </ion-item>
+
+        <!-- Required: Item price input field -->
+        <ion-item>
+          <ion-label position="stacked">Price *</ion-label>
+          <ion-input type="number" [(ngModel)]="newItem.price" required min="0"></ion-input>
+        </ion-item>
+
+        <!-- Required: Supplier name input field -->
+        <ion-item>
+          <ion-label position="stacked">Supplier *</ion-label>
+          <ion-input [(ngModel)]="newItem.supplier_name" required></ion-input>
+        </ion-item>
+
+        <!-- Toggle: Mark item as featured (1 = true, 0 = false) -->
+        <ion-item>
+          <ion-label position="stacked">Mark as Featured Item</ion-label>
+          <ion-toggle 
+            (ionChange)="newItem.featured_item = $event.detail.checked ? 1 : 0"
+            [checked]="newItem.featured_item === 1">
+          </ion-toggle>
+        </ion-item>
+
+      </ion-list>
+
+      <!-- Button to submit and save new item -->
+      <ion-button
+        expand="block"
+        color="secondary"
+        (click)="addNewItem()"
+        class="ion-margin-top">
+        Save Item
+      </ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Floating Help Button (Required by assignment) -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <ion-fab-button color="secondary" (click)="showHelp()">
+      <ion-icon name="help-circle"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
